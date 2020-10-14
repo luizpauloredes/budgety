@@ -3,9 +3,36 @@
 var budgetController = (function () {
 
     //some code
+    var Expense = function (id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
 
+    var Income = function (id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+        
+    };
+
+
+    var totalExpenses = 0;
+
+    var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    }
 
 })();
+
+
 
 
 
@@ -29,7 +56,7 @@ var UIController = (function () {
                 value: document.querySelector(DOMstrings.inputValue).value
             }
         },
-        getDOMstrings: function() {
+        getDOMstrings: function () {
             return DOMstrings
         }
     };
@@ -49,7 +76,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAdditem);
 
         document.addEventListener('keypress', function (event) {
-    
+
             if (event.keyCode === 13 || event.which === 13) {
                 ctrlAdditem()
             }
@@ -58,12 +85,12 @@ var controller = (function (budgetCtrl, UICtrl) {
 
 
 
-   
+
 
     var ctrlAdditem = function () {
         // to do list
         //1- get the filed input data
-        var input = UICtrl.getinput();        
+        var input = UICtrl.getinput();
         //2- add the item to the budget controller
         //3-  add the new item in the UI interface
         //4- calculate the budget 
@@ -72,13 +99,13 @@ var controller = (function (budgetCtrl, UICtrl) {
     };
 
     return {
-        init: function() {
+        init: function () {
             console.log('Application has started.')
             setupEventListeners();
         }
     }
 
-   
+
 
     //some code
 
